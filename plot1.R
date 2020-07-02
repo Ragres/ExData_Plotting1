@@ -1,0 +1,8 @@
+Datos=read.csv2("household_power_consumption.txt")
+Datos2=subset(Datos,Datos$Date=="1/2/2007" | Datos$Date=="2/2/2007")
+Datos2$Date=as.Date(Datos2$Date,"%d/%m/%Y")
+Datos2$Time=strptime(Datos2$Time,format= "%H:%M:%S")
+Datos2$Global_active_power=as.numeric(Datos2$Global_active_power)
+png(filename = "plot1.png")
+hist(Datos2$Global_active_power,main="Global Active Power",col="red",xlab = "Global Active Power (kilowatts)")
+dev.off()
